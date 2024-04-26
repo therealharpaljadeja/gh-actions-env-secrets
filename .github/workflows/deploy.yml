@@ -8,12 +8,12 @@ env:
     MONGODB_DB_NAME: ${{ secrets.MONGODB_DB_NAME }}
 jobs:
     test:
+        environment: testing
         env:
             MONGODB_CLUSTER_ADDRESS: ${{ secrets.MONGODB_CLUSTER_ADDRESS }}
             MONGODB_USERNAME: ${{ secrets.MONGODB_USERNAME }}
             MONGODB_PASSWORD: ${{ secrets.MONGODB_PASSWORD }}
             PORT: ${{ vars.PORT }}
-        environment: testing
         runs-on: ubuntu-latest
         steps:
             - name: Get Code
@@ -39,4 +39,4 @@ jobs:
             - name: Output information
               run: |
                   echo "MONGODB_DB_NAME: ${{ env.MONGODB_DB_NAME }}"
-                  echo "MONGODB_USERNAME: ${{ env.MONGODB_USERNAME }}"
+                  echo "MONGODB_PASSWORD: ${{ env.MONGODB_PASSWORD }}"
